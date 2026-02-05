@@ -21,7 +21,9 @@ function Chat() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ message }),
+          body: JSON.stringify({
+            chatInput: userMsg.text, // ✅ n8n ko sahi input
+          }),
         }
       );
 
@@ -29,7 +31,7 @@ function Chat() {
 
       const botMsg = {
         from: "bot",
-        text: data.output || "No response from AI",
+        text: data.article || "No response from AI", // ✅ sahi field
       };
 
       setMessages((prev) => [...prev, botMsg]);
