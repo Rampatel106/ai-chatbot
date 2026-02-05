@@ -27,7 +27,7 @@ const sendMessage = async () => {
 
   try {
     const response = await fetch(
-      "https://ramkumar0123.app.n8n.cloud/webhook/chat",
+      "https://ramkumar01234.app.n8n.cloud/webhook/ai-article-webhook",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
