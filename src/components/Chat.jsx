@@ -8,7 +8,6 @@ export default function Chat() {
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    // user message show
     setMessages((prev) => [...prev, { role: "user", text: input }]);
 
     try {
@@ -16,9 +15,7 @@ export default function Chat() {
         "https://ramkumar01234.app.n8n.cloud/webhook/ai-article-webhook",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             message: input,
             sessionId: sessionIdRef.current,
@@ -35,10 +32,10 @@ export default function Chat() {
           text: data.article || "AI se response nahi mila",
         },
       ]);
-    } catch (error) {
+    } catch (err) {
       setMessages((prev) => [
         ...prev,
-        { role: "ai", text: "Server error, baad me try karo" },
+        { role: "ai", text: "Server error, thodi der baad try karo" },
       ]);
     }
 
@@ -46,31 +43,8 @@ export default function Chat() {
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "auto" }}>
-      <h2>AI Chatbot</h2>
-
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: "10px",
-          minHeight: "300px",
-          marginBottom: "10px",
-        }}
-      >
-        {messages.map((msg, i) => (
-          <p key={i}>
-            <b>{msg.role === "user" ? "You" : "AI"}:</b> {msg.text}
-          </p>
-        ))}
-      </div>
-
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Type your message"
-        style={{ width: "80%" }}
-      />
-      <button onClick={sendMessage}>Send</button>
-    </div>
-  );
-}
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#f4f6f8",
+        displa
